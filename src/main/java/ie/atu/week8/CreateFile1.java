@@ -1,20 +1,24 @@
 package ie.atu.week8;
 
 import java.io.*;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Scanner;
 
 public class CreateFile1 {
     public static void main(String[] args) {
 
         {
-            File myFile = new File("MyFile.txt");
-            System.out.println("My file is located at " + myFile.getAbsolutePath());
-            String content = "Details to write";
+            Scanner keyboard = new Scanner(System.in);
+            System.out.println("My file is located at ");
+            String fileName = keyboard.nextLine();
                 try
                 {
-                    PrintWriter myWriter = new PrintWriter(
-                            new FileWriter(myFile, true));
-                    myWriter.println(" Hello Feller");
-                    myWriter.close();
+                    Scanner inputFile = new Scanner(new File(fileName));
+                    while(inputFile.hasNextLine())
+                    {
+                        System.out.println(inputFile.nextLine());
+                    }
                 } catch (IOException e)
                 {
                     e.printStackTrace();
